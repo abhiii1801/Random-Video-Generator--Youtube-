@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# 🎡 YT Roulette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, minimalistic React application to randomly "roll the dice" and pick a video from any YouTube channel or playlist. Perfect for "lazy viewing" and discovering forgotten gems or the most popular hits from your favorite creators.
 
-Currently, two official plugins are available:
+![YT Roulette Screenshot Placeholder](https://via.placeholder.com/1200x600?text=YT+Roulette+Screenshot)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+-   **Smart Channel Parsing**: Input a full URL, a `@handle`, or a raw Channel ID—it just works.
+-   **Dual Search Strategy**:
+    -   **Most Recent**: Pick from the 50 newest uploads.
+    -   **Most Popular**: Leverages the YouTube Search API to find the top 50 performing videos of all time (or for a specific timeframe).
+-   **Timeframe Filters**: Narrow down your roulette to the **Last Month**, **Last Year**, **Last 5 Years**, or **Any Time**.
+-   **Native Experience**: Uses the standard YouTube iframe player with built-in thumbnails and controls.
+-   **Total Fallback Logic**: The app is designed to **always** find a video. If your timeframe is too narrow, it automatically widens the search until a video is found.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+-   **Framework**: [React](https://reactjs.org/) (with [Vite](https://vitejs.dev/))
+-   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Date Handling**: [date-fns](https://date-fns.org/)
+-   **API**: [YouTube Data API v3](https://developers.google.com/youtube/v3)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Setup & Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/YT-Roulette.git
+    cd YT-Roulette
+    ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3.  **Configure Environment Variables**:
+    Create a `.env` file in the root directory and add your YouTube API Key:
+    ```env
+    VITE_YOUTUBE_API_KEY=your_api_key_here
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🌐 Deployment (Vercel/Netlify)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Push to GitHub**: Connect your repository to Vercel or Netlify.
+2.  **Add Environment Variable**: In the dashboard, add `VITE_YOUTUBE_API_KEY` under the "Environment Variables" section.
+3.  **Build Command**: `npm run build`
+4.  **Output Directory**: `dist`
+
+### ⚠️ Security Note
+Since this is a client-side app, your API key will be visible in the browser's network tab. **You MUST restrict your API key** in the Google Cloud Console to only work on your deployed domain (e.g., `https://your-app.vercel.app/*`).
+
+## 📜 License
+MIT License. Feel free to use and remix!
