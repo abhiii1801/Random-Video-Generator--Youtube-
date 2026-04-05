@@ -158,7 +158,7 @@ function App() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 p-6 md:p-10 flex items-center justify-between">
+      <header className="relative z-10 p-6 md:px-10 md:pt-10 md:pb-4 flex items-center justify-between">
         <button 
           onClick={reset}
           className="flex items-center gap-3 group hover:opacity-80 transition-opacity cursor-pointer"
@@ -173,10 +173,10 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 px-4 md:px-8 pb-32 pt-6 flex flex-col items-center min-h-[calc(100vh-120px)]">
+      <main className="relative z-10 px-4 md:px-8 pb-32 pt-2 flex flex-col items-center min-h-[calc(100vh-120px)]">
         
         {viewMode === 'input' && (
-          <div className="w-full max-w-2xl mx-auto flex flex-col items-center text-center mt-12 md:mt-24 space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div className="w-full max-w-2xl mx-auto flex flex-col items-center text-center mt-4 md:mt-8 space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
             
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium mb-4">
@@ -217,13 +217,13 @@ function App() {
         )}
 
         {viewMode === 'loading' && (
-          <div className="mt-32 w-full">
+          <div className="mt-10 w-full">
             <LoadingState progress={progress} statusText={loadingStatus} />
           </div>
         )}
 
         {viewMode === 'result' && currentVideo && (
-          <div className="w-full mt-8">
+          <div className="w-full mt-2">
             <VideoResult 
               video={currentVideo} 
               onPickAnother={pickAnother} 
